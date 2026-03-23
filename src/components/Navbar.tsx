@@ -18,7 +18,7 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 md:px-8">
         <Link to="/" className="flex items-center gap-2 font-heading text-lg sm:text-xl font-bold tracking-wide text-foreground">
-          <Scissors className="w-5 h-5 text-primary" />
+          <img src="/logo.png" alt="Hair By Helen Logo" className="w-8 h-8 object-contain" />
           <span>HAIR BY <span className="text-gradient-gold">HELEN</span></span>
         </Link>
 
