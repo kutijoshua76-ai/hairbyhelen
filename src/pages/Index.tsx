@@ -27,31 +27,41 @@ const fadeUp = {
 const Index = () => (
   <Layout>
     {/* Hero */}
-    <section className="relative h-[90vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-      <img src={heroImg} alt="Luxurious hair salon" className="absolute inset-0 w-full h-full object-cover" />
-      <div className="absolute inset-0 bg-hero-overlay" />
+    <section className="relative h-[95vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <motion.img
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 2, ease: "easeOut" }}
+        src={heroImg}
+        alt="Luxurious hair salon"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/40" />
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 text-center px-4 max-w-2xl"
+        transition={{ duration: 1, delay: 0.5 }}
+        className="relative z-10 text-center px-4 max-w-3xl"
       >
-        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-bold text-primary-foreground leading-tight mb-4">
-          Your Hair, <br />Our <span className="text-gradient-gold">Artistry</span>
+        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-6">
+          Premium Hairstyling Experience
+        </span>
+        <h1 className="font-heading text-5xl sm:text-6xl md:text-8xl font-bold text-white tracking-tighter leading-[0.9] mb-6">
+          Your Hair, <br />Our <span className="text-gradient-gold italic">Artistry</span>
         </h1>
-        <p className="text-primary-foreground/80 text-base sm:text-lg mb-8 font-body">
-          Experience luxury hairstyling that brings out your unique beauty.
+        <p className="text-white/70 text-lg sm:text-xl mb-10 font-body max-w-xl mx-auto leading-relaxed">
+          Discover a new standard of luxury where every strand is treated with meticulous care and artistic vision.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center">
           <Link
             to="/contact"
-            className="px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium tracking-wide hover:opacity-90 transition-opacity"
+            className="px-10 py-4 rounded-full bg-primary text-primary-foreground font-bold tracking-widest uppercase text-xs hover:shadow-[0_0_30px_rgba(225,152,152,0.4)] transition-all active:scale-95"
           >
             Book Appointment
           </Link>
           <Link
             to="/gallery"
-            className="px-8 py-3 rounded-full border border-primary-foreground/40 text-primary-foreground font-medium tracking-wide hover:bg-primary-foreground/10 transition-colors"
+            className="px-10 py-4 rounded-full border border-white/20 text-white font-bold tracking-widest uppercase text-xs hover:bg-white/5 transition-colors"
           >
             View Gallery
           </Link>
@@ -60,12 +70,15 @@ const Index = () => (
     </section>
 
     {/* Highlights */}
-    <section className="py-20 px-4">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
-          Why Choose <span className="text-gradient-gold">Us</span>
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="py-32 px-4 bg-[#050505]">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-20">
+          <h2 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-white mb-4">
+            Why Choose <span className="text-gradient-gold italic">Us</span>
+          </h2>
+          <div className="w-20 h-px bg-primary/50 mx-auto" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {highlights.map((item, i) => (
             <motion.div
               key={item.title}
@@ -74,11 +87,13 @@ const Index = () => (
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="bg-card rounded-2xl p-8 text-center shadow-soft"
+              className="group p-10 rounded-[2.5rem] bg-[#0a0a0a] border border-white/5 hover:border-primary/20 transition-colors shadow-2xl"
             >
-              <item.icon className="w-10 h-10 text-primary mx-auto mb-4" />
-              <h3 className="font-heading text-lg font-semibold text-foreground mb-2">{item.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{item.desc}</p>
+              <div className="w-16 h-16 rounded-3xl bg-primary/5 flex items-center justify-center mb-8 group-hover:bg-primary/10 transition-colors">
+                <item.icon className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="font-heading text-2xl font-bold text-white mb-4">{item.title}</h3>
+              <p className="text-white/50 text-base leading-relaxed">{item.desc}</p>
             </motion.div>
           ))}
         </div>
@@ -86,12 +101,25 @@ const Index = () => (
     </section>
 
     {/* Featured Styles */}
-    <section className="py-20 px-4 bg-card">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-12 text-foreground">
-          Featured <span className="text-gradient-gold">Styles</span>
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+    <section className="py-32 px-4 bg-[#080808]">
+      <div className="container mx-auto max-w-6xl">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-20 gap-8">
+          <div className="max-w-xl">
+            <h2 className="font-heading text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
+              Our Signature <br /><span className="text-gradient-gold italic">Creations</span>
+            </h2>
+            <p className="text-white/50 text-lg">
+              Each style is a bespoke masterpiece tailored to enhance your natural features and personal style.
+            </p>
+          </div>
+          <Link
+            to="/gallery"
+            className="px-8 py-3 rounded-full border border-primary/20 text-primary text-xs font-bold tracking-widest uppercase hover:bg-primary/5 transition-colors"
+          >
+            Explore Full Gallery
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {featured.map((style, i) => (
             <motion.div
               key={style.name}
@@ -100,51 +128,47 @@ const Index = () => (
               whileInView="visible"
               viewport={{ once: true }}
               variants={fadeUp}
-              className="group relative rounded-2xl overflow-hidden aspect-[3/4] shadow-card"
+              className="group relative rounded-[2rem] overflow-hidden aspect-[4/5] shadow-2xl"
             >
               <img
                 src={style.img}
                 alt={style.name}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent" />
-              <span className="absolute bottom-4 left-4 font-heading text-lg font-semibold text-primary-foreground">
-                {style.name}
-              </span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+              <div className="absolute bottom-8 left-8">
+                <p className="text-primary text-[10px] font-bold tracking-[0.3em] uppercase mb-2">Featured Style</p>
+                <h3 className="font-heading text-2xl font-bold text-white tracking-wide">
+                  {style.name}
+                </h3>
+              </div>
             </motion.div>
           ))}
-        </div>
-        <div className="text-center mt-10">
-          <Link
-            to="/gallery"
-            className="inline-flex px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium tracking-wide hover:opacity-90 transition-opacity"
-          >
-            See All Styles
-          </Link>
         </div>
       </div>
     </section>
 
     {/* CTA */}
-    <section className="py-20 px-4 text-center">
+    <section className="py-40 px-4 text-center bg-[#050505] relative overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 blur-[120px] rounded-full" />
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="container mx-auto max-w-xl"
+        transition={{ duration: 0.8 }}
+        className="container mx-auto max-w-3xl relative z-10"
       >
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-foreground mb-4">
-          Ready for a <span className="text-gradient-gold">Transformation</span>?
+        <h2 className="font-heading text-5xl md:text-7xl font-bold tracking-tight text-white mb-8">
+          Ready for your <br /><span className="text-gradient-gold italic">Transformation</span>?
         </h2>
-        <p className="text-muted-foreground mb-8">
-          Let's create something beautiful together. Book your appointment today.
+        <p className="text-white/60 text-lg sm:text-xl mb-12 max-w-xl mx-auto leading-relaxed">
+          Your journey to exceptional style begins here. Join our community of satisfied clients and experience the difference.
         </p>
         <Link
           to="/contact"
-          className="inline-flex px-8 py-3 rounded-full bg-primary text-primary-foreground font-medium tracking-wide hover:opacity-90 transition-opacity"
+          className="inline-flex px-12 py-5 rounded-full bg-primary text-primary-foreground font-bold tracking-widest uppercase text-sm hover:shadow-[0_0_40px_rgba(225,152,152,0.5)] transition-all active:scale-95"
         >
-          Get in Touch
+          Book Your Experience
         </Link>
       </motion.div>
     </section>

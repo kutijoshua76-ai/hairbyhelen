@@ -11,58 +11,65 @@ const stats = [
 
 const About = () => (
   <Layout>
-    <section className="py-20 px-4">
+    <section className="py-32 px-4 bg-[#050505] min-h-screen">
       <div className="container mx-auto max-w-5xl">
-        <motion.h1
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-heading text-4xl md:text-5xl font-bold text-center mb-4 text-foreground"
+          className="text-center mb-20"
         >
-          About <span className="text-gradient-gold">Hair by Helen</span>
-        </motion.h1>
-        <p className="text-center text-muted-foreground mb-16 max-w-md mx-auto">
-          Where passion meets artistry — creating hairstyles that make you feel extraordinary.
-        </p>
+          <h1 className="font-heading text-5xl md:text-7xl font-bold mb-6 text-white tracking-tight">
+            About <span className="text-gradient-gold italic">Hair by Helen</span>
+          </h1>
+          <p className="text-white/50 max-w-md mx-auto text-lg leading-relaxed">
+            Where passion meets artistry — creating bespoke hairstyles that make you feel truly extraordinary.
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="relative"
           >
+            <div className="absolute -inset-4 bg-primary/10 blur-2xl rounded-[3rem] -z-10" />
             <img
               src={stylistImg}
               alt="Our lead stylist"
-              className="rounded-2xl shadow-card w-full aspect-[3/4] object-cover"
+              className="rounded-[2.5rem] shadow-2xl w-full aspect-[4/5] object-cover border border-white/5"
             />
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Meet Your Stylist
+            <span className="text-primary text-[10px] font-bold tracking-[0.3em] uppercase mb-4 block">Our Story</span>
+            <h2 className="font-heading text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">
+              Meet Your <br /><span className="text-gradient-gold italic">Lead Stylist</span>
             </h2>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              With the minimum experience in the hair industry, our lead stylist brings creativity, precision, and a deep understanding of diverse hair textures to every appointment.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              Whether it's braids, blowouts, color treatments, or bridal updos — we believe every client deserves a look that feels uniquely theirs.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-4">
-              We stay updated with the latest trends and techniques while honoring timeless classics. Your satisfaction and confidence are our greatest reward.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              She's not just a stylist — she's a Fashionista in various aspects. Check out her links below at the connect section by tapping the social media icons!
-            </p>
+            <div className="space-y-6 text-white/60 text-lg leading-relaxed">
+              <p>
+                With a deep-rooted passion for the hair industry, our lead stylist brings creativity, precision, and a professional understanding of diverse hair textures to every appointment.
+              </p>
+              <p>
+                Whether it's masterfully crafted braids, premium color treatments, or elegant bridal updos — we believe every client deserves a bespoke look that radiates confidence.
+              </p>
+              <p>
+                We stay at the forefront of global trends and techniques while honoring timeless beauty standards. Your satisfaction is our primary reward and inspiration.
+              </p>
+              <p className="text-primary/80 font-medium">
+                "She's not just a stylist — she's an artist dedicated to your unique fashion journey."
+              </p>
+            </div>
           </motion.div>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
@@ -70,11 +77,13 @@ const About = () => (
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.5 }}
-              className="bg-card rounded-2xl p-8 text-center shadow-soft"
+              className="bg-[#0a0a0a] border border-white/5 rounded-[2rem] p-10 text-center shadow-2xl hover:border-primary/20 transition-colors"
             >
-              <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
-              <div className="font-heading text-3xl font-bold text-foreground mb-1">{stat.value}</div>
-              <div className="text-muted-foreground text-sm">{stat.label}</div>
+              <div className="w-16 h-16 rounded-2xl bg-primary/5 flex items-center justify-center mb-6 mx-auto">
+                <stat.icon className="w-8 h-8 text-primary" />
+              </div>
+              <div className="font-heading text-4xl font-bold text-white mb-2 tracking-tight">{stat.value}</div>
+              <div className="text-white/40 text-xs font-bold tracking-widest uppercase">{stat.label}</div>
             </motion.div>
           ))}
         </div>
